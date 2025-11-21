@@ -9,6 +9,7 @@ weights = {}
 files = sorted(glob.glob("*_nba_data.csv"))
 print("Found files:", files)
 
+data_poitns = 0
 for f in files:
     year = int(f.split("_")[0])
     df = pd.read_csv(f)
@@ -29,6 +30,10 @@ for f in files:
     ages[year] = df_clean["AGE"].mean()
     heights[year] = df_clean["PLAYER_HEIGHT_INCHES"].mean()
     weights[year] = df_clean["PLAYER_WEIGHT"].mean()
+
+    data_poitns += len(df)
+
+print("totalz: ", data_poitns)
 
 print("AGES:", ages)
 print("HEIGHTS:", heights)
